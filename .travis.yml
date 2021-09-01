@@ -25,4 +25,4 @@ after_success:
   # Push
   # Assuming DOCKER_PASSWORD and DOCKER_USERNAME are set in the Travis repository settings
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push mohammedismaiel/udagram-api-user:v3
+  - docker push mohammedismaiel/udagram-api-user:v5
