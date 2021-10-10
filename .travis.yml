@@ -3,7 +3,7 @@
   ###
 language: node_js
 node_js:
-  - 13
+  - 12
 
 services:
   - docker
@@ -20,9 +20,9 @@ script:
   - docker --version # print the version for logging
   # Build
   - docker build -t udagram-api-user .
-  - docker tag udagram-api-user mohammedismaiel/udagram-api-user:v5
+  - docker tag udagram-api-user mohammedismaiel/udagram-api-user:v7
 after_success:
   # Push
   # Assuming DOCKER_PASSWORD and DOCKER_USERNAME are set in the Travis repository settings
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push mohammedismaiel/udagram-api-user:v5
+  - docker push mohammedismaiel/udagram-api-user:v7

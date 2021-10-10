@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udagram-api-user
+  name: udagram-api-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: udagram-api-user
+  template:
+    metadata:
+      labels:
+        service: udagram-api-user
+    spec:
+      containers:
+      - image: mohammedismaiel/udagram-api-user:v5
+        name: udagram-api-user
+        imagePullPolicy: Always
+        command: [ "sleep" ]
+        args: [ "infinity" ]
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRES_USERNAME
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: URL
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: JWT_SECRET
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRES_DB
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRES_HOST
+      restartPolicy: Always
