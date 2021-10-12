@@ -15,9 +15,11 @@ spec:
         service: udagram-api-user
     spec:
       containers:
-      - image: mohammedismaiel/udagram-api-user:v12
+      - image: mohammedismaiel/udagram-api-user:v13
         name: udagram-api-user
         imagePullPolicy: Always
+        # command: [ "sleep" ]
+        # args: [ "infinity" ]
         resources:
           requests:
             memory: "64Mi"
@@ -36,4 +38,4 @@ spec:
           secret:
             secretName: aws-secret
 
-      restartPolicy: Always
+      
