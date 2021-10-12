@@ -5,7 +5,7 @@ metadata:
     service: udagram-api-user
   name: udagram-api-user
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       service: udagram-api-user
@@ -15,7 +15,7 @@ spec:
         service: udagram-api-user
     spec:
       containers:
-      - image: mohammedismaiel/udagram-api-user:v11
+      - image: mohammedismaiel/udagram-api-user:v12
         name: udagram-api-user
         imagePullPolicy: Always
         resources:
@@ -36,4 +36,4 @@ spec:
           secret:
             secretName: aws-secret
 
-      # restartPolicy: Always
+      restartPolicy: Always
