@@ -15,11 +15,9 @@ spec:
         service: udagram-api-user
     spec:
       containers:
-      - image: mohammedismaiel/udagram-api-user:v8
+      - image: mohammedismaiel/udagram-api-user:v11
         name: udagram-api-user
         imagePullPolicy: Always
-        command: [ "sleep" ]
-        args: [ "infinity" ]
         resources:
           requests:
             memory: "64Mi"
@@ -27,35 +25,15 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
-        env:
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: POSTGRES_PASSWORD
-        - name: POSTGRES_USERNAME
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: POSTGRES_USERNAME
-        - name: URL
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: URL
-        - name: JWT_SECRET
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: JWT_SECRET
-        - name: POSTGRES_DB
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: POSTGRES_DB
-        - name: POSTGRES_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: POSTGRES_HOST
-      restartPolicy: Always
+        volumeMounts:
+          - name: aws-secret
+            mountPath: "/root/.aws/"
+            readOnly: true
+        ports:
+        - containerPort: 8080
+      volumes:
+        - name: aws-secret
+          secret:
+            secretName: aws-secret
+
+      # restartPolicy: Always
