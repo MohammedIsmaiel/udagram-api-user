@@ -8,5 +8,5 @@ RUN npm ci
 # Bundle app source
 COPY . .
 EXPOSE 8080
-CMD [ "node","--max-old-space-size=4096","yourFile.js" ]
+CMD [ "node","--max-old-space-size=4096","./www/server.js" ]
 CMD [ "npm", "run", "prod" ]

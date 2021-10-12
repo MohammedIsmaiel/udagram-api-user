@@ -15,7 +15,7 @@ spec:
         service: udagram-api-user
     spec:
       containers:
-      - image: mohammedismaiel/udagram-api-user:v13
+      - image: mohammedismaiel/udagram-api-user:v14
         name: udagram-api-user
         imagePullPolicy: Always
         # command: [ "sleep" ]
