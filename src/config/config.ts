@@ -1,6 +1,6 @@
 // export const config = {
 //   'username': process.env.POSTGRES_USERNAME,
-//   'password': process.env.POSTGRES_PASSWORD,
+//   'password':`${process.env.POSTGRES_PASSWORD}`,
 //   'database': process.env.POSTGRES_DB,
 //   'host': process.env.POSTGRES_HOST,
 //   'dialect': 'postgres',
@@ -13,17 +13,20 @@
 //   },
 // };
 
+/*
+  local variables
+*/
 export const config = {
-  'username': 'jimmy',
-  'password': '12345678',
-  'database': 'udagram',
-  'host': 'database-1.cguaicw36n62.us-east-2.rds.amazonaws.com',
+  'username': 'mohammedismaiel',
+  'password': 'mohammedismaiel',
+  'database': 'mohammedismaiel',
+  'host': "database-1.ctpvdajc29u8.eu-west-2.rds.amazonaws.com",
   'dialect': 'postgres',
-  'aws_region': 'us-east-2',
-  'aws_profile': 'default',
-  'aws_media_bucket': 'something-dev',
-  'url': 'localhost:8100',
+  'aws_region': "eu-west-2",
+  'aws_profile': "default",
+  'aws_media_bucket': "udagram-micro-bucket",
+  'url': "http://localhost:8100",
   'jwt': {
-    'secret': 'secret',
+    'secret': "my-JWT-secret",
   },
 };
